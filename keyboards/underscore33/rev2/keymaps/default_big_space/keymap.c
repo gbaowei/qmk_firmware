@@ -23,7 +23,6 @@ enum layers{
 
 #define KC_NUM_SPC LT(_NUM_SYM, KC_SPC)
 #define KC_NAV_ENT LT(_NAV, KC_ENT)
-#define KC_GA LGUI_T(KC_A)
 #define KC_AS LALT_T(KC_S)
 #define KC_CD LCTL_T(KC_D)
 #define KC_SF LSFT_T(KC_F)
@@ -38,12 +37,13 @@ enum combo_events {
   COMBO_TAB,
   COMBO_ESC,
   COMBO_DEL,
+  COMBO_QUOT
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_33_big_space(
     KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,   KC_U,    KC_I,   KC_O,     KC_P,
-   KC_GA,  KC_AS,  KC_CD,  KC_SF,   KC_G,   KC_H,  KC_SJ,   KC_CK,  KC_AL, KC_GSCLN,
+    KC_A,   KC_AS,  KC_CD,  KC_SF,  KC_G,   KC_H,  KC_SJ,   KC_CK,  KC_AL, KC_GSCLN,
     KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_N,   KC_M, KC_COMM, KC_DOT,  KC_SLSH,
                         KC_LCTL, KC_NUM_SPC, KC_NAV_ENT
   ),
@@ -56,9 +56,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NAV] = LAYOUT_33_big_space(
-      RESET,    KC_NO,    KC_NO,    KC_NO,  KC_NO,   KC_GRV,  KC_PGDN,    KC_UP,  KC_PGUP,  KC_SCLN,
-    RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  KC_NO,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,   KC_END,
-    RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  KC_NO,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  KC_BSLS,
+      RESET,    KC_F1,    KC_F2,    KC_F3,  KC_F4,   KC_GRV,  KC_PGDN,    KC_UP,  KC_PGUP,  KC_SCLN,
+      KC_F5,    KC_F6,    KC_F7,    KC_F8,  KC_F9,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,   KC_END,
+      KC_F10,   KC_F11,   KC_F12,   KC_NO,  KC_NO,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  KC_BSLS,
                         KC_TRNS,   KC_TRNS,   KC_TRNS
   ),
 };
@@ -70,6 +70,7 @@ const uint16_t PROGMEM combo_numbak[] = {KC_0, KC_9, COMBO_END};
 const uint16_t PROGMEM combo_tab[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_E, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {KC_MINS, KC_EQL, COMBO_END};
+const uint16_t PROGMEM combo_quot[] = {KC_O, KC_I, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [COMBO_BSPC] = COMBO(combo_bspc,KC_BSPC),
@@ -77,6 +78,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [COMBO_TAB] = COMBO(combo_tab,KC_TAB),
   [COMBO_ESC] = COMBO(combo_esc,KC_ESC),
   [COMBO_DEL] = COMBO(combo_del,KC_DEL),
+  [COMBO_QUOT] = COMBO(combo_quot,KC_QUOT),
 
 };
 #endif
