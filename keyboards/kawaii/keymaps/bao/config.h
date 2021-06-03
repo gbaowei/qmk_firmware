@@ -1,4 +1,4 @@
-/* Copyright 2020 tominabox1
+/* Copyright 2020 marksard
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,15 +13,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 #pragma once
 
-#define IGNORE_MOD_TAP_INTERRUPT // helps with homerow mods
+// place overrides here
+#define TAPPING_TERM 200
+#define IGNORE_MOD_TAP_INTERRUPT
+
+#define TAPPING_LAYER_TERM 150 // Custom LT Tapping term
+#define TAPPING_TERM_PER_KEY
 
 #define COMBO_COUNT 6
 #define COMBO_TERM 15
-
-#define TAPPING_TERM 200
-#define TAPPING_TERM_PER_KEY
 
 #define MK_KINETIC_SPEED
 #define MOUSEKEY_INTERVAL 16 // for 60 fps screens, pair with MOUSEKEY_MAX_SPEED

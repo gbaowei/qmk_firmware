@@ -72,31 +72,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-// void encoder_update_user(uint8_t index, bool clockwise) {
-//     if (index == 0) {
-//         if (clockwise) {
-//             tap_code16(S(C(KC_TAB)));
-//         } else {
-//             tap_code16(C(KC_TAB));
-//         }
-//     }
-// }
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_NUM_SPC:
+            return 150;
+        case KC_NAV_ENT:
+            return 150;
+        default:
+            return TAPPING_TERM;
+    }
+ }
 
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
   if(IS_LAYER_ON(_BASE)) { // on base layer cycle tabs
     if (clockwise) {
       tap_code16(S(C(KC_TAB)));
     } else {
       tap_code16(C(KC_TAB));
-    }        
-  } else { // on other layers emulate volume control
+    }
+    return true;       
+  }
+  else { // on other layers emulate volume control
     if (clockwise) {
       tap_code(KC_VOLD);
     } else {
       tap_code(KC_VOLU);
     }
+    return true;
   }
 }
+
+// bool encoder_update_user(uint8_t index, bool clockwise) {
+//     if (index == 0) {
+//         if (clockwise) {
+//             tap_code(KC_VOLU);
+//         } else {
+//             tap_code(KC_VOLD);
+//         }
+//     }
+//     return true;
+// }
 
 #ifdef COMBO_ENABLE
 const uint16_t PROGMEM combo_bspc[] = {KC_O, KC_P, COMBO_END};
@@ -116,6 +131,8 @@ combo_t key_combos[COMBO_COUNT] = {
 
 };
 #endif
+
+
 
 #ifdef OLED_DRIVER_ENABLE  //Special thanks to Sickbabies for this great OLED widget!
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
