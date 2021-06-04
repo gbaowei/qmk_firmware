@@ -17,12 +17,10 @@
 
 enum layers {
   _BASE,
-  _NUM_SYM,
-  _NAV,
+  _LETSGO,
+  _BOIS,
   _ADJUST,
 };
-
-#define KC_AJST  MO(_ADJUST)
 
 enum combo_events {
   COMBO_BSPC,
@@ -35,8 +33,8 @@ enum combo_events {
   COMBO_SLSH
 };
 
-#define KC_LSPC LT(_NUM_SYM, KC_SPC)
-#define KC_RENT LT(_NAV, KC_ENT)
+#define KC_NSPC LT(_LETSGO, KC_SPC)
+#define KC_NENT LT(_BOIS, KC_ENT)
 
 #define KC_GA LGUI_T(KC_A)
 #define KC_AS LALT_T(KC_S)
@@ -48,6 +46,7 @@ enum combo_events {
 #define KC_CK RCTL_T(KC_K)
 #define KC_AL RALT_T(KC_L)
 
+#define KC_AJST  MO(_ADJUST)
 
 // // Lower layer mod tap
 // #define KC_F1AL  LALT_T(KC_F1)
@@ -70,11 +69,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM,      KC_DOT,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      _______, KC_LCTL, KC_LALT,     KC_LSPC,               KC_RENT, KC_ENT, KC_AJST, _______
+      _______, KC_LCTL, KC_LALT,     KC_NSPC,               KC_NENT, KC_ENT, KC_AJST, _______
   //`-----------------------------------------------------------------------------------------'
   ),
 
-  [_NUM_SYM] = LAYOUT(
+  [_LETSGO] = LAYOUT(
   //,-----------------------------------------------------------------------------------------.
       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
@@ -86,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //`-----------------------------------------------------------------------------------------'
   ),
 
-  [_NAV] = LAYOUT(
+  [_BOIS] = LAYOUT(
   //,-----------------------------------------------------------------------------------------.
        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
@@ -118,7 +117,7 @@ const uint16_t PROGMEM combo_tab[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_E, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {KC_ASTR, KC_MINS, COMBO_END};
 const uint16_t PROGMEM combo_quot[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM combo_scln[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_scln[] = {KC_N, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_slsh[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -136,9 +135,9 @@ combo_t key_combos[COMBO_COUNT] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_LSPC:
+        case KC_NSPC:
             return 150;
-        case KC_RENT:
+        case KC_NENT:
             return 150;
         default:
             return TAPPING_TERM;
