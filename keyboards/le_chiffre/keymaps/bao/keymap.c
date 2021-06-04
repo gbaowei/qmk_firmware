@@ -15,7 +15,7 @@
  */
 #include QMK_KEYBOARD_H
 
-enum layers{
+enum layers {
   _BASE,
   _NUM_SYM,
   _NAV,
@@ -33,10 +33,12 @@ enum combo_events {
 
 #define KC_NUM_SPC LT(_NUM_SYM, KC_SPC)
 #define KC_NAV_ENT LT(_NAV, KC_ENT)
+
 #define KC_GA LGUI_T(KC_A)
 #define KC_AS LALT_T(KC_S)
 #define KC_CD LCTL_T(KC_D)
 #define KC_SF LSFT_T(KC_F)
+
 #define KC_SJ RSFT_T(KC_J)
 #define KC_CK RCTL_T(KC_K)
 #define KC_AL RALT_T(KC_L)
@@ -52,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_NUM_SYM] = LAYOUT(
         KC_1,   KC_2,     KC_3,     KC_4,      KC_5,  KC_TRNS,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
-    KC_EXLM,   KC_AT,  KC_HASH,   KC_DLR,   KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR, KC_EQUAL,  KC_MINS,
+    KC_EXLM,   KC_AT,  KC_HASH,   KC_DLR,   KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,   KC_EQL,  KC_MINS,
     KC_BSLS, KC_LCBR,  KC_LBRC,  KC_LPRN,   KC_UNDS,            KC_RPRN,  KC_RBRC,  KC_RCBR,   KC_DOT,   KC_GRV,
                                 KC_CAPS,    KC_TRNS,            KC_TRNS,  KC_TRNS
   ),
