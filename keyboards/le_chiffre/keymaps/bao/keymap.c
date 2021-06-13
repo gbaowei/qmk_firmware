@@ -44,6 +44,7 @@ enum combo_events {
 #define KC_AL RALT_T(KC_L)
 #define KC_GSCLN RGUI_T(KC_SCLN)
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
     KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,  LCTL(KC_W),  KC_Y,   KC_U,    KC_I,   KC_O,     KC_P,
@@ -53,10 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_NUM_SYM] = LAYOUT(
-        KC_1,   KC_2,     KC_3,     KC_4,      KC_5,  KC_TRNS,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
-    KC_EXLM,   KC_AT,  KC_HASH,   KC_DLR,   KC_PERC,            KC_CIRC,  KC_AMPR,  KC_ASTR,   KC_EQL,  KC_MINS,
-    KC_BSLS, KC_LCBR,  KC_LBRC,  KC_LPRN,   KC_UNDS,            KC_RPRN,  KC_RBRC,  KC_RCBR,   KC_DOT,   KC_GRV,
-                                KC_CAPS,    KC_TRNS,            KC_TRNS,  KC_TRNS
+        KC_1,   KC_2,     KC_3,     KC_4,      KC_5,  TG(_MOUSE), KC_6,     KC_7,     KC_8,      KC_9,       KC_0,
+    KC_EXLM,   KC_AT,  KC_HASH,   KC_DLR,   KC_PERC,              KC_CIRC,  KC_AMPR,  KC_ASTR,   KC_EQL,  KC_MINS,
+    KC_BSLS, KC_LCBR,  KC_LBRC,  KC_LPRN,   KC_UNDS,              KC_RPRN,  KC_RBRC,  KC_RCBR,   KC_DOT,   KC_GRV,
+                                KC_CAPS,    KC_TRNS,              KC_TRNS,  KC_TRNS
   ),
 
   [_NAV] = LAYOUT(
@@ -67,12 +68,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_MOUSE] = LAYOUT(
-    KC_WH_L,  KC_WH_R,  KC_MS_U,  XXXXXXX,  KC_WH_U,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    KC_BTN2,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_D,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  KC_ACL0,  KC_ACL1,  KC_ACL2,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+    KC_WH_L,  KC_WH_R,  KC_MS_U,  XXXXXXX,  KC_WH_U,  XXXXXXX,  XXXXXXX,  XXXXXXX,     KC_W,     KC_E,  TG(_MOUSE),
+    KC_BTN2,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_D,            XXXXXXX,     KC_A,     KC_S,     KC_D,    XXXXXXX,
+    XXXXXXX,  KC_ACL0,  KC_ACL1,  KC_ACL2,  XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,
                                   KC_BTN3,  KC_BTN1,            XXXXXXX,  XXXXXXX
-  ),
+  )
+
 };
+
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -104,17 +107,6 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
   }
 }
 
-// bool encoder_update_user(uint8_t index, bool clockwise) {
-//     if (index == 0) {
-//         if (clockwise) {
-//             tap_code(KC_VOLU);
-//         } else {
-//             tap_code(KC_VOLD);
-//         }
-//     }
-//     return true;
-// }
-
 #ifdef COMBO_ENABLE
 const uint16_t PROGMEM combo_bspc[] = {KC_O, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_numbak[] = {KC_0, KC_9, COMBO_END};
@@ -135,10 +127,9 @@ combo_t key_combos[COMBO_COUNT] = {
 #endif
 
 
-
-#ifdef OLED_DRIVER_ENABLE  //Special thanks to Sickbabies for this great OLED widget!
+#ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_90;  // rotates for proper orientation
+    return OLED_ROTATION_90;
 }
 
 void render_lechiffre_logo(void) {

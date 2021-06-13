@@ -15,6 +15,9 @@
  */
 #pragma once
 
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
+
 #define IGNORE_MOD_TAP_INTERRUPT // helps with homerow mods
 
 #define COMBO_COUNT 6
