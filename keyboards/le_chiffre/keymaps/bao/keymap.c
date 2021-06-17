@@ -95,8 +95,18 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else {
       tap_code16(C(KC_TAB));
     }
-    return true;       
+    return true;  
   }
+
+  else if(IS_LAYER_ON(_NAV)) {
+    if (clockwise) {
+      tap_code16(C(KC_Z));
+    } else {
+      tap_code16(C(KC_Y));
+    }
+    return true;
+  }
+
   else { // on other layers emulate volume control
     if (clockwise) {
       tap_code(KC_VOLD);
@@ -161,8 +171,6 @@ static void render_layer_status(void) {
         case _MOUSE:
             oled_write_ln_P(PSTR("MAUS"), false);
             break;
-        default:
-            oled_write_ln_P(PSTR("?????"), false);
     }
 }
 
