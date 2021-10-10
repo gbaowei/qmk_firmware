@@ -19,7 +19,8 @@ enum layers {
   _BASE,
   _LETSGO,
   _BOIS,
-  _MAUS
+  _MAUS,
+  _GAME
 };
 
 enum combo_events {
@@ -99,13 +100,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MAUS] = LAYOUT(
   //,-----------------------------------------------------------------------------------------.
-      KC_WH_L, KC_WH_R, KC_MS_U, XXXXXXX, KC_WH_U, KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      KC_WH_L, KC_WH_R, KC_MS_U, XXXXXXX, KC_WH_U, KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX,TG(_GAME),
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
       KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_SLCK, XXXXXXX, XXXXXXX,     XXXXXXX,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
       XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, KC_NLCK, XXXXXXX, XXXXXXX,     XXXXXXX,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
       XXXXXXX, XXXXXXX, KC_BTN3,          KC_BTN1,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+  //`-----------------------------------------------------------------------------------------'
+  ), 
+
+    [_GAME] = LAYOUT(
+  //,-----------------------------------------------------------------------------------------.
+       KC_ESC,   KC_W, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(_GAME),
+  //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
+         KC_A,    KC_S,    KC_D, KC_LSFT,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,
+  //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,
+  //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX,          KC_SPC,           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   //`-----------------------------------------------------------------------------------------'
   )
 };
