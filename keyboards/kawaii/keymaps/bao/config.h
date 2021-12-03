@@ -20,7 +20,7 @@
 #define COMBO_COUNT 9
 #define COMBO_TERM 15
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 130
 #define TAPPING_TERM_PER_KEY
 
 #define MK_KINETIC_SPEED
