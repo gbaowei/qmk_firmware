@@ -17,12 +17,11 @@
 
 enum layers {
   _BASE,
-  _NUM_SYM,
-  _NAV,
-  _ADJUST,
+  _LETSGO,
+  _BOIS,
+  _MAUS,
+  _GAME
 };
-
-#define KC_AJST  MO(_ADJUST)
 
 enum combo_events {
   COMBO_BSPC,
@@ -35,8 +34,8 @@ enum combo_events {
   COMBO_SLSH
 };
 
-#define KC_LSPC LT(_NUM_SYM, KC_SPC)
-#define KC_RENT LT(_NAV, KC_ENT)
+#define KC_NSPC LT(_LETSGO, KC_SPC)
+#define KC_NENT LT(_BOIS, KC_ENT)
 
 #define KC_GA LGUI_T(KC_A)
 #define KC_AS LALT_T(KC_S)
@@ -48,6 +47,7 @@ enum combo_events {
 #define KC_CK RCTL_T(KC_K)
 #define KC_AL RALT_T(KC_L)
 
+#define KC_AJST  MO(_ADJUST)
 
 // // Lower layer mod tap
 // #define KC_F1AL  LALT_T(KC_F1)
@@ -70,11 +70,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
       KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM,      KC_DOT,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      _______, KC_LCTL, KC_LALT,     KC_LSPC,               KC_RENT, KC_ENT, KC_AJST, _______
+      _______, KC_LCTL, KC_LALT,     KC_NSPC,               KC_NENT, KC_ENT, MO(_MAUS), _______
   //`-----------------------------------------------------------------------------------------'
   ),
 
-  [_NUM_SYM] = LAYOUT(
+  [_LETSGO] = LAYOUT(
   //,-----------------------------------------------------------------------------------------.
       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
@@ -86,27 +86,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //`-----------------------------------------------------------------------------------------'
   ),
 
-  [_NAV] = LAYOUT(
+  [_BOIS] = LAYOUT(
   //,-----------------------------------------------------------------------------------------.
-       KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+      KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_HOME, KC_PGDN, KC_UP,   KC_PGUP, KC_END,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LEFT, KC_DOWN,   KC_UP,     KC_RGHT,
+      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_GRV,  KC_LEFT, KC_DOWN,     KC_RGHT,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_DEL, KC_COMM,  KC_DOT,     RESET,
+      KC_F11,  KC_F12, XXXXXXX, XXXXXXX, XXXXXXX,  KC_DEL,  KC_COMM, KC_DOT,      RESET,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      _______, _______, _______,          _______,          _______, _______, _______, _______
+      _______, KC_TRNS, KC_TRNS,          KC_TRNS,          KC_TRNS, _______, _______, _______
   //`-----------------------------------------------------------------------------------------'
   ),
 
-  [_ADJUST] = LAYOUT(
+  [_MAUS] = LAYOUT(
   //,-----------------------------------------------------------------------------------------.
-        RESET, XXXXXXX, AG_NORM, AG_SWAP, KC_PSCR, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,  KC_INS,
+      KC_WH_L, KC_WH_R, KC_MS_U, XXXXXXX, KC_WH_U, KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX,TG(_GAME),
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, KC_NLCK, KC_MS_L, KC_MS_D, KC_MS_U,     KC_MS_R,
+      KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, KC_SLCK, XXXXXXX, XXXXXXX,     XXXXXXX,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, KC_CAPS, KC_BTN1, KC_BTN2, XXXXXXX,     XXXXXXX,
+      XXXXXXX, KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, KC_NLCK, XXXXXXX, XXXXXXX,     XXXXXXX,
   //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
-      _______, _______, _______,          _______,          _______, _______, _______, _______
+      XXXXXXX, XXXXXXX, KC_BTN3,          KC_BTN1,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+  //`-----------------------------------------------------------------------------------------'
+  ), 
+
+    [_GAME] = LAYOUT(
+  //,-----------------------------------------------------------------------------------------.
+       KC_ESC,   KC_W, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TG(_GAME),
+  //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
+         KC_A,    KC_S,    KC_D, KC_LSFT,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,
+  //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX,
+  //|--------+--------+--------+--------+--------|--------+--------+--------+--------+--------|
+      XXXXXXX, XXXXXXX, XXXXXXX,          KC_SPC,           XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
   //`-----------------------------------------------------------------------------------------'
   )
 };
@@ -118,7 +130,7 @@ const uint16_t PROGMEM combo_tab[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_E, COMBO_END};
 const uint16_t PROGMEM combo_del[] = {KC_ASTR, KC_MINS, COMBO_END};
 const uint16_t PROGMEM combo_quot[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM combo_scln[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM combo_scln[] = {KC_N, KC_P, COMBO_END};
 const uint16_t PROGMEM combo_slsh[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
@@ -136,9 +148,9 @@ combo_t key_combos[COMBO_COUNT] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case KC_LSPC:
+        case KC_NSPC:
             return 150;
-        case KC_RENT:
+        case KC_NENT:
             return 150;
         default:
             return TAPPING_TERM;

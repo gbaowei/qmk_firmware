@@ -17,7 +17,7 @@
 
 #define IGNORE_MOD_TAP_INTERRUPT
 
-#define COMBO_COUNT 9
+#define COMBO_COUNT 8
 #define COMBO_TERM 15
 
 #define TAPPING_TERM 130
