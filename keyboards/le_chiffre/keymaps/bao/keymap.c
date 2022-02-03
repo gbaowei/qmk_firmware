@@ -168,11 +168,8 @@ static void render_layer_status(void) {
         case _MOUSE:
             oled_write_ln_P(PSTR("MAUS"), false);
             break;
-<<<<<<< HEAD
-=======
         default:
             oled_write_ln_P(PSTR("???"), false);
->>>>>>> 85c54d6468d9e9e0cf3420153b5561c97ad85e2c
     }
 }
 
