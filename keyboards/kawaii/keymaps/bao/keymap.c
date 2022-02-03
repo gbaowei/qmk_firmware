@@ -146,16 +146,16 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 #endif
 
-uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case KC_NSPC:
-            return 150;
-        case KC_NENT:
-            return 150;
-        default:
-            return TAPPING_TERM;
-    }
- }
+// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+//     switch (keycode) {
+//         case KC_NSPC:
+//             return 150;
+//         case KC_NENT:
+//             return 150;
+//         default:
+//             return TAPPING_TERM;
+//     }
+//  }
 
 // uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 //   switch (keycode) {

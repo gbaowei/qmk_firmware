@@ -39,16 +39,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) { /* First encoder */
-        if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
-            tap_code(KC_VOLU);
-        }
+  if(IS_LAYER_ON(0)) { 
+    if (clockwise) {
+      tap_code16(S(C(KC_TAB)));
+    } else {
+      tap_code16(C(KC_TAB));
     }
-    return true;
-}
+    return true;  
+  }
 
+  else { 
+    if (clockwise) {
+      tap_code16(KC_VOLD);
+    } else {
+      tap_code16(KC_VOLU);
+    }
+    return true;  
+  }
+}
 
 #ifdef OLED_DRIVER_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_270; }
